@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO {
+public class UserDAO implements DAO<User> {
     private final Connection connection;
 
     private static void setAllFields(PreparedStatement ps, User user) throws SQLException {
@@ -46,7 +46,8 @@ public class UserDAO {
         this.connection = connection;
     }
 
-    public User add(User user) throws SQLException {
+    @Override
+    public User create(User user) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
@@ -72,6 +73,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public void update(User user) throws SQLException {
         try (PreparedStatement ps = connection.prepareStatement("UPDATE USERS SET NAME = ?, CPF = ?, MAIL = ?, POSTAL_CODE = ?, ADDRESS = ?, \"NUMBER\" = ?, ADDRESS2 = ?, NEIGHBORHOOD = ?, CITY = ?, STATE = ? WHERE ID = ?")) {
             setAllFields(ps, user);
@@ -84,6 +86,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public void delete(int id) throws SQLException {
         try (PreparedStatement ps = connection.prepareStatement("DELETE FROM USERS WHERE ID = ?")) {
             ps.setInt(1, id);
@@ -95,6 +98,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public List<User> get() throws SQLException {
         try (PreparedStatement ps = connection.prepareStatement("SELECT * FROM USERS")) {
             List<User> userList = new ArrayList<>();
@@ -109,6 +113,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public User get(int id) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;

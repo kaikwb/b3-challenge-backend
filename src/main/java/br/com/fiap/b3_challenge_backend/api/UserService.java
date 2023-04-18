@@ -94,7 +94,7 @@ public class UserService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addUser(User user) {
         try {
-            User userCreated = this.userDAO.add(user);
+            User userCreated = this.userDAO.create(user);
             return Response.status(Response.Status.CREATED).entity(userCreated).build();
         } catch (Exception e) {
             return createResponseOnException(e);
