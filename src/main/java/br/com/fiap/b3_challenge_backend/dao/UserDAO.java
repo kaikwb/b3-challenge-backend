@@ -16,13 +16,14 @@ public class UserDAO {
     private static void setAllFields(PreparedStatement ps, User user) throws SQLException {
         ps.setString(1, user.getName());
         ps.setString(2, user.getCpf());
-        ps.setString(3, user.getPostalCode());
-        ps.setString(4, user.getAddress());
-        ps.setString(5, user.getNumber());
-        ps.setString(6, user.getAddress2());
-        ps.setString(7, user.getNeighborhood());
-        ps.setString(8, user.getCity());
-        ps.setString(9, user.getState());
+        ps.setString(3, user.getMail());
+        ps.setString(4, user.getPostalCode());
+        ps.setString(5, user.getAddress());
+        ps.setString(6, user.getNumber());
+        ps.setString(7, user.getAddress2());
+        ps.setString(8, user.getNeighborhood());
+        ps.setString(9, user.getCity());
+        ps.setString(10, user.getState());
     }
 
     private static User createFromResult(ResultSet rs) throws SQLException {
@@ -30,6 +31,7 @@ public class UserDAO {
             rs.getInt("ID"),
             rs.getString("NAME"),
             rs.getString("CPF"),
+            rs.getString("MAIL"),
             rs.getString("POSTAL_CODE"),
             rs.getString("ADDRESS"),
             rs.getString("NUMBER"),
@@ -50,7 +52,7 @@ public class UserDAO {
 
         try {
             String[] returnId = {"ID"};
-            ps = connection.prepareStatement("INSERT INTO USERS (NAME, CPF, POSTAL_CODE, ADDRESS, \"NUMBER\", ADDRESS2, NEIGHBORHOOD, CITY, STATE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", returnId);
+            ps = connection.prepareStatement("INSERT INTO USERS (NAME, CPF, MAIL, POSTAL_CODE, ADDRESS, \"NUMBER\", ADDRESS2, NEIGHBORHOOD, CITY, STATE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", returnId);
             setAllFields(ps, user);
             ps.executeUpdate();
 
@@ -71,7 +73,7 @@ public class UserDAO {
     }
 
     public void update(User user) throws SQLException {
-        try (PreparedStatement ps = connection.prepareStatement("UPDATE USERS SET NAME = ?, CPF = ?, POSTAL_CODE = ?, ADDRESS = ?, \"NUMBER\" = ?, ADDRESS2 = ?, NEIGHBORHOOD = ?, CITY = ?, STATE = ? WHERE ID = ?")) {
+        try (PreparedStatement ps = connection.prepareStatement("UPDATE USERS SET NAME = ?, CPF = ?, MAIL = ?, POSTAL_CODE = ?, ADDRESS = ?, \"NUMBER\" = ?, ADDRESS2 = ?, NEIGHBORHOOD = ?, CITY = ?, STATE = ? WHERE ID = ?")) {
             setAllFields(ps, user);
             ps.setInt(10, user.getId());
             int rowAffected = ps.executeUpdate();

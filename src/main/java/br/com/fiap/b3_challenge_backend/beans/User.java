@@ -4,6 +4,7 @@ public class User {
     private Integer id;
     private String name;
     private String cpf;
+    private String mail;
     private String postalCode;
     private String address;
     private String number;
@@ -15,10 +16,11 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String name, String cpf, String postalCode, String address, String number, String address2, String neighborhood, String city, String state) {
+    public User(Integer id, String name, String cpf, String mail, String postalCode, String address, String number, String address2, String neighborhood, String city, String state) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
+        this.mail = mail;
         this.postalCode = postalCode;
         this.address = address;
         this.number = number;
@@ -50,6 +52,14 @@ public class User {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getPostalCode() {
