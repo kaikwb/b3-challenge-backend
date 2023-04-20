@@ -43,7 +43,7 @@ public class UserService {
         }
     }
 
-    private Response createResponseOnException(Exception e) {
+    public Response createResponseOnException(Exception e) {
         Object exceptionClass = e.getClass();
         String exceptionMessage = e.getMessage();
 
@@ -107,7 +107,7 @@ public class UserService {
     public Response updateUser(@PathParam("id") int id, User user) {
         try {
             user.setId(id);
-            this.userDAO.update(user);
+            this.userDAO.update(id, user);
             return Response.status(200).build();
         } catch (Exception e) {
             return createResponseOnException(e);
