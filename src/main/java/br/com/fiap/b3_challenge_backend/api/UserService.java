@@ -5,7 +5,6 @@ import br.com.fiap.b3_challenge_backend.beans.ErrorCode;
 import br.com.fiap.b3_challenge_backend.beans.User;
 import br.com.fiap.b3_challenge_backend.dao.UserDAO;
 import br.com.fiap.b3_challenge_backend.database.DatabaseConnection;
-import jakarta.annotation.PreDestroy;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
@@ -21,26 +20,12 @@ public class UserService {
     @Context
     UriInfo uriInfo;
 
-    private final String DATABASE_USER = "user";
-    private final String DATABASE_PASS = "password";
-
     private final Connection connection;
     private final UserDAO userDAO;
 
     public UserService() throws SQLException {
-        this.connection = DatabaseConnection.connect(DATABASE_USER, DATABASE_PASS);
+        this.connection = DatabaseConnection.getConnection();
         this.userDAO = new UserDAO(connection);
-    }
-
-    @PreDestroy
-    public void closeConnection() {
-        if (this.connection != null) {
-            try {
-                this.connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public Response createResponseOnException(Exception e) {
