@@ -2,12 +2,13 @@ package br.com.fiap.b3_challenge_backend.beans;
 
 public class User {
     private Integer id;
-    private String name;
-    private String cpf;
+    private String firstName;
+    private String lastName;
     private String mail;
+    private String password;
     private String postalCode;
     private String address;
-    private String number;
+    private String addressNumber;
     private String address2;
     private String neighborhood;
     private String city;
@@ -16,14 +17,15 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String name, String cpf, String mail, String postalCode, String address, String number, String address2, String neighborhood, String city, String state) {
+    public User(Integer id, String firstName, String lastName, String mail, String password, String postalCode, String address, String addressNumber, String address2, String neighborhood, String city, String state) {
         this.id = id;
-        this.name = name;
-        this.cpf = cpf;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.mail = mail;
+        this.password = password;
         this.postalCode = postalCode;
         this.address = address;
-        this.number = number;
+        this.addressNumber = addressNumber;
         this.address2 = address2;
         this.neighborhood = neighborhood;
         this.city = city;
@@ -38,20 +40,20 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getMail() {
@@ -60,6 +62,14 @@ public class User {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getPostalCode() {
@@ -78,12 +88,12 @@ public class User {
         this.address = address;
     }
 
-    public String getNumber() {
-        return number;
+    public String getAddressNumber() {
+        return addressNumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setAddressNumber(String addressNumber) {
+        this.addressNumber = addressNumber;
     }
 
     public String getAddress2() {

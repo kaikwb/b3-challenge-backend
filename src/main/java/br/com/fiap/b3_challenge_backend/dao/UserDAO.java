@@ -10,12 +10,13 @@ public class UserDAO extends DAO<User> {
     static final String tableName = "USERS";
     static final String idColumn = "ID";
     static final Map<String, String> columnAttrMap = new LinkedHashMap<>() {{
-        put("NAME", "Name");
-        put("CPF", "Cpf");
+        put("FIRST_NAME", "FirstName");
+        put("LAST_NAME", "LastName");
         put("MAIL", "Mail");
+        put("PASSWORD", "Password");
         put("POSTAL_CODE", "PostalCode");
         put("ADDRESS", "Address");
-        put("\"NUMBER\"", "Number");
+        put("ADDRESS_NUMBER", "AddressNumber");
         put("ADDRESS2", "Address2");
         put("NEIGHBORHOOD", "Neighborhood");
         put("CITY", "City");
