@@ -11,6 +11,12 @@ public class DatabaseConnection {
 
     private static Connection connection = null;
 
+    /**
+     * Cria e retorna a conexão com o banco de dados, caso já tenha uma conexão aberta retorna a mesma conexão.
+     *
+     * @return Retorna a conexão com o banco de dados
+     * @throws SQLException - Exceção lançada em erros de conexão com o banco de dados
+     */
     public static Connection getConnection() throws SQLException {
         if (connection == null) {
             try {

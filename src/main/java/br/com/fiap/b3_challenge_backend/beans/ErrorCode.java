@@ -11,14 +11,30 @@ public enum ErrorCode {
 
     private final Integer code;
 
+    /**
+     * Cria um código de erro.
+     *
+     * @param code código do erro.
+     */
     ErrorCode(Integer code) {
         this.code = code;
     }
 
+    /**
+     * Retorna o código do erro.
+     *
+     * @return código do erro.
+     */
     public Integer getCode() {
         return this.code;
     }
 
+    /**
+     * Retorna o código do erro.
+     *
+     * @param code código do erro.
+     * @return código do erro.
+     */
     public static ErrorCode fromInteger(Integer code) {
         for (ErrorCode errorCode : ErrorCode.values()) {
             if (Objects.equals(errorCode.getCode(), code)) {

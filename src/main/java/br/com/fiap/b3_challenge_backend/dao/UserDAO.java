@@ -23,6 +23,11 @@ public class UserDAO extends DAO<User> {
         put("STATE", "State");
     }};
 
+    /**
+     * Cria um DAO para a entidade User.
+     *
+     * @param connection conexão com o banco de dados.
+     */
     public UserDAO(Connection connection) {
         super(connection, tableName, idColumn, columnAttrMap, User.class);
     }

@@ -21,11 +21,23 @@ public class Service<T> {
     public final Connection connection;
     private final DAO<T> entityDAO;
 
+    /**
+     * Cria um serviço para a entidade T.
+     *
+     * @param entityDAO DAO da entidade T.
+     * @throws SQLException caso ocorra algum erro com a conexão de dados.
+     */
     public Service(DAO<T> entityDAO) throws SQLException {
         this.connection = DatabaseConnection.getConnection();
         this.entityDAO = entityDAO;
     }
 
+    /**
+     * Cria uma resposta HTTP de acordo com a exceção.
+     *
+     * @param e exceção lançada.
+     * @return resposta HTTP.
+     */
     public Response createResponseOnException(Exception e) {
         Object exceptionClass = e.getClass();
         String exceptionMessage = e.getMessage();
@@ -45,9 +57,14 @@ public class Service<T> {
         }
     }
 
+    /**
+     * Retorna todas as entidades T.
+     *
+     * @return resposta HTTP.
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUsers() {
+    public Response getEntities() {
         try {
             return Response.status(200).entity(this.entityDAO.get()).build();
         } catch (Exception e) {
@@ -55,10 +72,16 @@ public class Service<T> {
         }
     }
 
+    /**
+     * Retorna uma entidade T.
+     *
+     * @param id identificador da entidade.
+     * @return resposta HTTP.
+     */
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUser(@PathParam("id") int id) {
+    public Response getEntity(@PathParam("id") int id) {
         try {
             T entity = this.entityDAO.get(id);
 
@@ -72,10 +95,16 @@ public class Service<T> {
         }
     }
 
+    /**
+     * Cria uma entidade T.
+     *
+     * @param entity entidade T.
+     * @return resposta HTTP.
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addUser(T entity) {
+    public Response createEntity(T entity) {
         try {
             T entityCreated = this.entityDAO.create(entity);
             return Response.status(Response.Status.CREATED).entity(entityCreated).build();
@@ -84,10 +113,17 @@ public class Service<T> {
         }
     }
 
+    /**
+     * Atualiza uma entidade T.
+     *
+     * @param id     identificador da entidade.
+     * @param entity entidade T.
+     * @return resposta HTTP.
+     */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateUser(@PathParam("id") int id, T entity) {
+    public Response updateEntity(@PathParam("id") int id, T entity) {
         try {
             this.entityDAO.update(id, entity);
             return Response.status(200).build();
@@ -96,9 +132,15 @@ public class Service<T> {
         }
     }
 
+    /**
+     * Deleta uma entidade T.
+     *
+     * @param id identificador da entidade.
+     * @return resposta HTTP.
+     */
     @DELETE
     @Path("/{id}")
-    public Response deleteUser(@PathParam("id") int id) {
+    public Response deleteEntity(@PathParam("id") int id) {
         try {
             this.entityDAO.delete(id);
             return Response.status(Response.Status.NO_CONTENT).build();
