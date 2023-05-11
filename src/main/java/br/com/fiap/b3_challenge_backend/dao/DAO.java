@@ -6,6 +6,8 @@ import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -99,6 +101,12 @@ public class DAO<T> {
                 ps.setString(++i, (String) attrValue);
             } else if (attrClass.equals(Integer.class)) {
                 ps.setInt(++i, (Integer) attrValue);
+            } else if (attrClass.equals(Double.class)) {
+                ps.setDouble(++i, (Double) attrValue);
+            } else if (attrClass.equals(Boolean.class)) {
+                ps.setBoolean(++i, (Boolean) attrValue);
+            } else if (attrClass.equals(LocalDateTime.class)) {
+                ps.setTimestamp(++i, Timestamp.valueOf((LocalDateTime) attrValue));
             }
         }
     }
@@ -115,7 +123,19 @@ public class DAO<T> {
 
         for (String column : this.columnAttrMap.keySet()) {
             String attr = this.columnAttrMap.get(column);
-            setAttrFromEntity("set" + attr, getAttrClass(attr), rs.getString(column), obj);
+            Class attrClass = getAttrClass(attr);
+
+            if (attrClass.equals(Boolean.class)) {
+                setAttrFromEntity("set" + attr, attrClass, rs.getBoolean(column), obj);
+            } else if (attrClass.equals(LocalDateTime.class)) {
+                setAttrFromEntity("set" + attr, attrClass, rs.getTimestamp(column).toLocalDateTime(), obj);
+            } else if (attrClass.equals(Double.class)) {
+                setAttrFromEntity("set" + attr, attrClass, rs.getDouble(column), obj);
+            } else if (attrClass.equals(Integer.class)) {
+                setAttrFromEntity("set" + attr, attrClass, rs.getInt(column), obj);
+            } else if (attrClass.equals(String.class)) {
+                setAttrFromEntity("set" + attr, attrClass, rs.getString(column), obj);
+            }
         }
 
         setAttrFromEntity("set" + pascalCase(idColumn), Integer.class, rs.getInt(idColumn), obj);
