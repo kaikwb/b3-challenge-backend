@@ -19,7 +19,7 @@ public class TextDAO extends DAO<Text> {
     }};
 
     /**
-     * Cria um DAO para a entidade Text.
+     * Cria um DAO para a entidade @see Text.
      *
      * @param connection conexão com o banco de dados.
      */

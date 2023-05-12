@@ -24,7 +24,7 @@ public class UserDAO extends DAO<User> {
     }};
 
     /**
-     * Cria um DAO para a entidade User.
+     * Cria um DAO para a entidade @see User.
      *
      * @param connection conexão com o banco de dados.
      */
