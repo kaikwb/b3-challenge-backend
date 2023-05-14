@@ -1,13 +1,13 @@
 package br.com.fiap.b3_challenge_backend.dao;
 
-import br.com.fiap.b3_challenge_backend.beans.Text;
+import br.com.fiap.b3_challenge_backend.beans.Article;
 
 import java.sql.Connection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class TextDAO extends DAO<Text> {
-    static final String tableName = "TEXTS";
+public class ArticleDAO extends DAO<Article> {
+    static final String tableName = "ARTICLES";
     static final String idColumn = "ID";
     static final Map<String, String> columnAttrMap = new LinkedHashMap<>() {{
         put("TITLE", "Title");
@@ -19,11 +19,11 @@ public class TextDAO extends DAO<Text> {
     }};
 
     /**
-     * Cria um DAO para a entidade @see Text.
+     * Cria um DAO para a entidade @see Article.
      *
      * @param connection conexão com o banco de dados.
      */
-    public TextDAO(Connection connection) {
-        super(connection, tableName, idColumn, columnAttrMap, Text.class);
+    public ArticleDAO(Connection connection) {
+        super(connection, tableName, idColumn, columnAttrMap, Article.class);
     }
 }

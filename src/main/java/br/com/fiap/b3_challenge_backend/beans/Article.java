@@ -4,7 +4,7 @@ import jakarta.json.bind.annotation.JsonbDateFormat;
 
 import java.time.LocalDateTime;
 
-public class Text {
+public class Article {
     private Integer id;
     private String title;
     private String author;
@@ -15,13 +15,13 @@ public class Text {
     private String content;
 
     /**
-     * Cria uma materia sem dados.
+     * Cria um artigo sem dados.
      */
-    public Text() {
+    public Article() {
     }
 
     /**
-     * Cria uma materia com dados.
+     * Cria um artigo com dados.
      *
      * @param id        identificador da materia.
      * @param title     título da materia.
@@ -31,7 +31,7 @@ public class Text {
      * @param createdAt data de criação da materia.
      * @param content   conteúdo da materia.
      */
-    public Text(Integer id, String title, String author, String source, String link, LocalDateTime createdAt, String content) {
+    public Article(Integer id, String title, String author, String source, String link, LocalDateTime createdAt, String content) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -42,126 +42,126 @@ public class Text {
     }
 
     /**
-     * Retorna o identificador da materia.
+     * Retorna o identificador do artigo.
      *
-     * @return identificador da materia.
+     * @return identificador do artigo.
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * Define o identificador da materia.
+     * Define o identificador do artigo.
      *
-     * @param id identificador da materia.
+     * @param id identificador do artigo.
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * Retorna o título da materia.
+     * Retorna o título do artigo.
      *
-     * @return título da materia.
+     * @return título do artigo.
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * Define o título da materia.
+     * Define o título do artigo.
      *
-     * @param title título da materia.
+     * @param title título do artigo.
      */
     public void setTitle(String title) {
         this.title = title;
     }
 
     /**
-     * Retorna o autor da materia.
+     * Retorna o autor do artigo.
      *
-     * @return autor da materia.
+     * @return autor do artigo.
      */
     public String getAuthor() {
         return author;
     }
 
     /**
-     * Define o autor da materia.
+     * Define o autor do artigo.
      *
-     * @param author autor da materia.
+     * @param author autor do artigo.
      */
     public void setAuthor(String author) {
         this.author = author;
     }
 
     /**
-     * Retorna a fonte da materia.
+     * Retorna a fonte do artigo.
      *
-     * @return fonte da materia.
+     * @return fonte do artigo.
      */
     public String getSource() {
         return source;
     }
 
     /**
-     * Define a fonte da materia.
+     * Define a fonte do artigo.
      *
-     * @param source fonte da materia.
+     * @param source fonte do artigo.
      */
     public void setSource(String source) {
         this.source = source;
     }
 
     /**
-     * Retorna o link da materia.
+     * Retorna o link do artigo.
      *
-     * @return link da materia.
+     * @return link do artigo.
      */
     public String getLink() {
         return link;
     }
 
     /**
-     * Define o link da materia.
+     * Define o link do artigo.
      *
-     * @param link link da materia.
+     * @param link link do artigo.
      */
     public void setLink(String link) {
         this.link = link;
     }
 
     /**
-     * Retorna a data de criação da materia.
+     * Retorna a data de criação do artigo.
      *
-     * @return data de criação da materia.
+     * @return data de criação do artigo.
      */
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
     /**
-     * Define a data de criação da materia.
+     * Define a data de criação do artigo.
      *
-     * @param createdAt data de criação da materia.
+     * @param createdAt data de criação do artigo.
      */
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
     /**
-     * Retorna o conteúdo da materia.
+     * Retorna o conteúdo do artigo.
      *
-     * @return conteúdo da materia.
+     * @return conteúdo do artigo.
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * Define o conteúdo da materia.
+     * Define o conteúdo do artigo.
      *
-     * @param content conteúdo da materia.
+     * @param content conteúdo do artigo.
      */
     public void setContent(String content) {
         this.content = content;
