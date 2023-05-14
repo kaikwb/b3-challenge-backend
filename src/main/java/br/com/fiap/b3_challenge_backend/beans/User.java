@@ -13,6 +13,7 @@ public class User {
     private String neighborhood;
     private String city;
     private String state;
+    private Integer role;
 
     /**
      * Cria um usuário sem dados.
@@ -35,8 +36,9 @@ public class User {
      * @param neighborhood  bairro do usuário.
      * @param city          cidade do usuário.
      * @param state         estado do usuário.
+     * @param role          atribuição do usuário.
      */
-    public User(Integer id, String firstName, String lastName, String mail, String password, String postalCode, String address, String addressNumber, String address2, String neighborhood, String city, String state) {
+    public User(Integer id, String firstName, String lastName, String mail, String password, String postalCode, String address, String addressNumber, String address2, String neighborhood, String city, String state, Integer role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -49,6 +51,7 @@ public class User {
         this.neighborhood = neighborhood;
         this.city = city;
         this.state = state;
+        this.role = role;
     }
 
     /**
@@ -265,5 +268,23 @@ public class User {
      */
     public void setState(String state) {
         this.state = state;
+    }
+
+    /**
+     * Retorna a atribuição do usuário.
+     *
+     * @return atribuição do usuário.
+     */
+    public Integer getRole() {
+        return role;
+    }
+
+    /**
+     * Define a atribuição do usuário.
+     *
+     * @param role atribuição do usuário.
+     */
+    public void setRole(Integer role) {
+        this.role = role;
     }
 }

@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
     private static final String URL = "jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL";
-    private static final String DATABASE_USER = "USER";
-    private static final String DATABASE_PASS = "PASSWORD";
+    private static final String DATABASE_USER = "rm96731";
+    private static final String DATABASE_PASS = "161193";
 
     private static Connection connection = null;
 
